@@ -62,7 +62,7 @@ The short-answer questions (Q21–Q35) and their 0–2 marks are what the `gabar
 
 ```
 .
-├── projeto_ia_apresentacao.ipynb   # Full pipeline (Google Colab notebook)
+├── handwritten-exam-grader.ipynb   # Full pipeline (Google Colab notebook)
 └── README.md
 ```
 
