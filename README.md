@@ -34,6 +34,30 @@ Each open-ended question is scored from **0.0 to 2.0** in steps of 0.5, based on
 
 The thresholds live in `LIMIARES_NOTA` and can be tuned to make grading stricter or more lenient.
 
+## Dataset
+
+This project uses the public dataset [**A Dataset of Digitized Student Examination Papers, Answer Keys, and Manual Evaluations for Automated Grading Research**](https://data.mendeley.com/datasets/sf3kvjwknt/1) (Mendeley Data, DOI: [10.17632/sf3kvjwknt.1](https://doi.org/10.17632/sf3kvjwknt.1)), licensed under **CC BY 4.0**.
+
+It contains the records of a university-level Data Science exam taken by 50 students (Anna University, Chennai), anonymized for public release. The exam has two parts, for a maximum of 50 marks:
+
+- **Part I:** 20 multiple-choice questions (Q1–Q20), 1 mark each
+- **Part II:** 15 short-answer questions (Q21–Q35), 2 marks each
+
+| Content | Description |
+|---|---|
+| `Question.txt` / `answerkey.txt` | The exam questionnaire and the grading rubric / answer key |
+| `Student_Pdf/` | 50 scanned, uncorrected handwritten answer sheets (the pipeline's input) |
+| `Corrected_Pdf/` | The same 50 sheets manually graded, with teacher annotations |
+| `Teacher_manual_marks_Anonymized.csv` | Item-level manual scores (Q1–Q35) for every student, useful as ground truth to evaluate the automatic grader |
+
+The short-answer questions (Q21–Q35) and their 0–2 marks are what the `gabarito_discursivas` answer key and the scoring scale in this project are based on.
+
+> The dataset is **not** included in this repository. Download it from the link above and upload the answer sheet image(s) you want to grade when the notebook asks for a file.
+
+**Citation**
+
+> Dinesh K P (2026). *A Dataset of Digitized Student Examination Papers, Answer Keys, and Manual Evaluations for Automated Grading Research*. Mendeley Data, V1. https://doi.org/10.17632/sf3kvjwknt.1
+
 ## Project structure
 
 ```
@@ -84,6 +108,10 @@ gabarito_discursivas = {
 - **OCR errors propagate.** Handwriting recognition is imperfect, and the 1.5B-parameter Qwen model can only fix obvious mistakes.
 - **Semantic similarity is an approximation.** Grading is based on embedding similarity, so it may miss factual errors in answers that are worded similarly to the key.
 - **Only open-ended questions are graded.** Multiple-choice answers are cleaned by the LLM, but the notebook's answer key and scoring cover the open-ended questions only.
+
+## Acknowledgments
+
+Thanks to Dinesh K P and Anna University, Chennai, for releasing the exam dataset under CC BY 4.0.
 
 ## Built with
 
